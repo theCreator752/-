@@ -1,0 +1,189 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Video Collection</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-locked">
+
+<div id="authScreen" class="auth-screen">
+  <form class="auth-card" onsubmit="event.preventDefault(); login();">
+    <div class="auth-icon">🔐</div>
+    <h2>Private Video Collection</h2>
+    <p>Sign in to access your saved YouTube and Instagram collections.</p>
+
+    <div class="auth-field">
+      <label for="loginUsername">Username</label>
+      <input id="loginUsername" type="text" autocomplete="username"
+             autocapitalize="none" spellcheck="false" required>
+    </div>
+
+    <div class="auth-field">
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password" autocomplete="current-password"
+             required>
+    </div>
+
+    <button class="auth-login-btn" id="loginButton" type="submit">Sign in</button>
+    <div id="authError" class="auth-error" aria-live="polite"></div>
+    <p class="auth-note">Protected session • automatic lock after inactivity</p>
+  </form>
+</div>
+
+
+<header>
+  <h1>🎬 My Video Collection</h1>
+  <p>Organize your YouTube videos and Instagram Reels.</p>
+  <div style="margin-top:14px;"><button class="logout-btn" onclick="logout()">Log out</button></div>
+</header>
+
+
+<div class="app">
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-header">
+
+        <h2>Collections</h2>
+
+        <button
+          class="new-collection-btn"
+          onclick="openCollectionModal()">
+          +
+        </button>
+
+      </div>
+
+      <div
+        id="collectionList"
+        class="collection-list">
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+      <!-- ADD VIDEO -->
+
+      <section class="add-box">
+
+        <h2>Add a video</h2>
+
+        <div
+          id="selectedCollection"
+          class="selected-collection">
+        </div>
+
+        <div class="input-row">
+
+          <input
+            id="videoUrl"
+            type="text"
+            placeholder="Paste YouTube or Instagram URL..."
+          />
+
+          <button
+            class="add-btn"
+            onclick="addVideo()">
+            Add Video
+          </button>
+
+        </div>
+
+        <div
+          id="message"
+          class="message">
+        </div>
+
+      </section>
+
+
+      <!-- COLLECTION -->
+
+      <section>
+
+        <div class="collection-header">
+
+          <h2
+            id="collectionTitle"
+            class="collection-title">
+          </h2>
+
+          <span id="videoCount"></span>
+
+        </div>
+
+
+        <div id="videoGrid"></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+<!-- CREATE COLLECTION MODAL -->
+
+<div
+  id="collectionModal"
+  class="modal">
+
+  <div class="modal-box">
+
+    <h2>Create Collection</h2>
+
+    <input
+      id="collectionNameInput"
+      type="text"
+      placeholder="e.g. Funny Reels"
+    />
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-btn"
+        onclick="closeCollectionModal()">
+        Cancel
+      </button>
+
+      <button
+        class="create-btn"
+        onclick="createCollection()">
+        Create
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Instagram embed script -->
+
+<script
+  async
+  src="https://www.instagram.com/embed.js">
+</script>
+  <script src="app.js"></script>
+
+</body>
+</html>
+
+```
